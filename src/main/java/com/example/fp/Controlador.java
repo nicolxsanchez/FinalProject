@@ -108,11 +108,36 @@ public class Controlador {
     @FXML
     private void modificarParada(MouseEvent event) {
        // cargarVentana("ModificarParada");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ModificarParada.fxml"));
+            Parent root = loader.load();
+
+            ModificaParadas controller = loader.getController();
+            controller.setGrafo(grafo);
+
+            borderPane.setCenter(root);
+
+        } catch (IOException e) {
+            mostrarAlerta("Error", "No se pudo cargar la vista de modificar paradas.");
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void modificarRuta(MouseEvent event) {
         //cargarVentana("ModificarRuta");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ModificarRuta.fxml"));
+            Parent root = loader.load();
+
+            ModificaRutas controller = loader.getController();
+            controller.setGrafo(grafo);
+
+            borderPane.setCenter(root);
+        } catch (IOException e) {
+            mostrarAlerta("Error", "No se pudo cargar la vista de modificar rutas.");
+            e.printStackTrace();
+        }
     }
 
     @FXML

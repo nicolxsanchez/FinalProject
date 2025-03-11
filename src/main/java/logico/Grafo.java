@@ -52,12 +52,14 @@ public class Grafo {
         return true;
     }
 
-    public boolean modificarParada(Parada parada, String nuevoNombre) {
+    public boolean modificarParada(Parada parada, String nuevoNombre, double nuevoLatitud, double nuevoLongitud) {
         if (!adyacencias.containsKey(parada)) {
             System.out.println("La parada no existe.");
             return false;
         }
         parada.setNombre(nuevoNombre);
+        parada.setLatitud(nuevoLatitud);
+        parada.setLongitud(nuevoLongitud);
         System.out.println("Parada modificada: " + parada.getNombre());
         return true;
     }
@@ -82,6 +84,7 @@ public class Grafo {
         System.out.println("No existe la ruta a modificar.");
         return false;
     }
+
 
 
     public boolean eliminarParada(Parada parada) {
