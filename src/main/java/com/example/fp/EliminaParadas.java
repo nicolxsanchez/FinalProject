@@ -1,13 +1,9 @@
 package com.example.fp;
 
-
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import logico.Grafo;
 import logico.Parada;
-import java.util.List;
-
 
 public class EliminaParadas {
 
@@ -15,10 +11,6 @@ public class EliminaParadas {
 
     @FXML
     private ComboBox<Parada> cbParadas;
-
-    @FXML
-    private Button btnEliminar;
-
 
     public void setGrafo(Grafo grafo) {
         this.grafo = grafo;

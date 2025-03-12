@@ -3,7 +3,6 @@ package com.example.fp;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import logico.Grafo;
@@ -16,9 +15,6 @@ public class EliminaRutas {
 
     @FXML
     private ComboBox<Ruta> cbRutas;
-
-    @FXML
-    private Button btnEliminar;
 
 
     public void setGrafo(Grafo grafo) {

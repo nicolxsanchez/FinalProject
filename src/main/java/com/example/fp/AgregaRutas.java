@@ -20,7 +20,6 @@ public class AgregaRutas {
     @FXML private TextField txtTiempo;
     @FXML private TextField txtCosto;
     @FXML private TextField txtDistancia;
-    @FXML private Button btnGuardar;
 
     @FXML
     private void guardarRuta() {
@@ -128,7 +127,4 @@ public class AgregaRutas {
     private boolean validarNumero(String valor) {
         return valor.matches("\\d+");
     }
-
-
-
 }

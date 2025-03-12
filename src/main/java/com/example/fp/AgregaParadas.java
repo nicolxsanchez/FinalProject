@@ -2,9 +2,7 @@ package com.example.fp;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import logico.Parada;
 import logico.Grafo;
 
@@ -15,7 +13,6 @@ public class AgregaParadas
     @FXML private TextField txtNombre;
     @FXML private TextField txtLatitud;
     @FXML private TextField txtLongitud;
-    @FXML private Button btnGuardar;
 
     @FXML
     private void guardarParada() {
@@ -46,19 +43,11 @@ public class AgregaParadas
                 return;
             }
         }
-
         Parada nuevaParada = new Parada(txtNombre.getText(), latitud, longitud);
         grafo.agregarParada(nuevaParada);
 
         mostrarAlerta("Parada Agregada", "Se agregó la parada: " + txtNombre.getText());
         limpiarCampos();
-
-    }
-
-    @FXML
-    private void cerrarVentana() {
-        Stage stage = (Stage) txtNombre.getScene().getWindow();
-        stage.close();
     }
 
     public void setGrafo(Grafo grafo) {
