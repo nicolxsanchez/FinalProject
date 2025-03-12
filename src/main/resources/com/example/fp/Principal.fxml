@@ -11,43 +11,38 @@
    <left>
       <VBox prefHeight="411.0" prefWidth="188.0" style="-fx-background-color: #64babf;" BorderPane.alignment="CENTER">
          <children>
-            <Button stylesheets="@estilo2.css" mnemonicParsing="false"  onMouseClicked="#agregarParada" prefHeight="51.0" prefWidth="187.0" text="Agregar Parada" textFill="WHITE">
+            <Button mnemonicParsing="false" onMouseClicked="#agregarParada" prefHeight="51.0" prefWidth="187.0"  stylesheets="@estilo2.css" text="Agregar Parada" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button  stylesheets="@estilo2.css" layoutX="10.0" layoutY="10.0"  mnemonicParsing="false" onMouseClicked="#agregarRuta" prefHeight="52.0" prefWidth="187.0" text="Agregar Ruta" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#agregarRuta" prefHeight="52.0" prefWidth="187.0" stylesheets="@estilo2.css" text="Agregar Ruta" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
                
             </Button>
-            <Button  stylesheets="@estilo2.css" layoutX="10.0" layoutY="62.0" mnemonicParsing="false" onMouseClicked="#eliminarParada" prefHeight="52.0" prefWidth="187.0"  text=" Eliminar Parada" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="62.0" mnemonicParsing="false" onMouseClicked="#eliminarParada" prefHeight="52.0" prefWidth="187.0"  stylesheets="@estilo2.css" text=" Eliminar Parada" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button stylesheets="@estilo2.css" layoutX="10.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#eliminarRuta" prefHeight="52.0" prefWidth="187.0"  text="Eliminar Ruta" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#eliminarRuta" prefHeight="52.0" prefWidth="187.0"  stylesheets="@estilo2.css" text="Eliminar Ruta" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button stylesheets="@estilo2.css" layoutX="10.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#modificarParada" prefHeight="52.0" prefWidth="187.0"  text="Modificar Parada" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#modificarParada" prefHeight="52.0" prefWidth="187.0"  stylesheets="@estilo2.css" text="Modificar Parada" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button stylesheets="@estilo2.css" layoutX="10.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#modificarRuta" prefHeight="51.0" prefWidth="187.0" text="Modificar Ruta" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#modificarRuta" prefHeight="51.0" prefWidth="187.0" stylesheets="@estilo2.css" text="Modificar Ruta" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button stylesheets="@estilo2.css" layoutX="10.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#calcRutaMasCorta" prefHeight="52.0" prefWidth="187.0" text=" Calcular Ruta Más Corta" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button stylesheets="@estilo2.css" layoutX="10.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#mostrarParadasYRutas" prefHeight="52.0" prefWidth="187.0" text="Mostrar Paradas y Rutas" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#calcRutaMasCorta" prefHeight="52.0" prefWidth="187.0"  stylesheets="@estilo2.css" text=" Calcular Ruta Más Corta" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

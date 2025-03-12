@@ -16,30 +16,19 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import logico.Grafo;
 
-
 public class Controlador {
-
 
     @FXML private BorderPane borderPane;
     @FXML private AnchorPane anchorPane;
     private Grafo grafo = new Grafo();
 
-    //borderPane.setCenter(anchorPane);  <- para el boton inicio
-
     @FXML
     private void agregarParada(MouseEvent event) {
-       // cargarVentana("AgregarParada");
-
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarParada.fxml"));
             Parent root = loader.load();
-
-            // Configurar el controlador con el grafo
             AgregaParadas controller = loader.getController();
             controller.setGrafo(grafo);
-
-            // Mostrar directamente en el BorderPane (sin abrir ventana)
             borderPane.setCenter(root);
 
         } catch (IOException e) {
@@ -50,8 +39,6 @@ public class Controlador {
 
     @FXML
     private void agregarRuta(MouseEvent event) {
-        //cargarVentana("AgregarRuta");
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarRuta.fxml"));
             Parent root = loader.load();
@@ -69,8 +56,6 @@ public class Controlador {
 
     @FXML
     private void eliminarParada(MouseEvent event) {
-        //cargarVentana("EliminarParada");
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("EliminarParada.fxml"));
             Parent root = loader.load();
@@ -88,8 +73,6 @@ public class Controlador {
 
     @FXML
     private void eliminarRuta(MouseEvent event) {
-        //cargarVentana("EliminarRuta");
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("EliminarRuta.fxml"));
             Parent root = loader.load();
@@ -107,7 +90,6 @@ public class Controlador {
 
     @FXML
     private void modificarParada(MouseEvent event) {
-       // cargarVentana("ModificarParada");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ModificarParada.fxml"));
             Parent root = loader.load();
@@ -125,7 +107,6 @@ public class Controlador {
 
     @FXML
     private void modificarRuta(MouseEvent event) {
-        //cargarVentana("ModificarRuta");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ModificarRuta.fxml"));
             Parent root = loader.load();
@@ -142,25 +123,18 @@ public class Controlador {
 
     @FXML
     private void calcRutaMasCorta(MouseEvent event) {
-
-    }
-
-    @FXML
-    private void mostrarParadasYRutas(MouseEvent event) {
-
-    }
-
-
-    private void cargarVentana(String ventana, Grafo grafo) {
-        Parent root = null;
-
         try {
-            root = FXMLLoader.load(getClass().getResource(ventana + ".fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CalcularRutaMasCorta.fxml"));
+            Parent root = loader.load();
 
-        borderPane.setCenter(root);
+            CalcRutaMasCorta controller = loader.getController();
+            controller.setGrafo(grafo);
+
+            borderPane.setCenter(root);
+        } catch (IOException e) {
+            mostrarAlerta("Error", "No se pudo cargar la vista de calcular ruta mas corta.");
+            e.printStackTrace();
+        }
     }
 
     private void mostrarAlerta(String titulo, String mensaje) {

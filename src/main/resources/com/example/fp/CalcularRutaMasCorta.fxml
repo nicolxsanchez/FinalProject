@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.fp.CalcRutaMasCorta"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fp.CalcRutaMasCorta">
+   <children>
+      <Label fx:id="lblTitulo" layoutX="104.0" layoutY="22.0" text="Calcular Ruta Más Corta">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="73.0" text="Criterio:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbCriterio" layoutX="91.0" layoutY="70.0" prefWidth="150.0" promptText="&lt;Seleccionar&gt;" />
+      <Label layoutX="39.0" layoutY="108.0" text="Origen:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbOrigen" layoutX="91.0" layoutY="105.0" prefWidth="150.0" promptText="&lt;Seleccionar&gt;" />
+      <Label layoutX="36.0" layoutY="144.0" text="Destino:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbDestino" layoutX="91.0" layoutY="141.0" prefWidth="150.0" promptText="&lt;Seleccionar&gt;" />
+      <Button fx:id="btnCalcular" layoutX="279.0" layoutY="104.0" mnemonicParsing="false" onAction="#calcularRuta" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #64babf;" text="Calcular" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="25.0" layoutY="192.0" text="Rutas Registradas:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="261.0" layoutY="192.0" text="Ruta Más Corta:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <ListView fx:id="lvRutasRegistradas" layoutX="14.0" layoutY="224.0" prefHeight="143.0" prefWidth="157.0" />
+      <TextArea fx:id="txtResultado" disable="true" layoutX="228.0" layoutY="224.0" prefHeight="143.0" prefWidth="157.0" />
+   </children>
 </AnchorPane>
