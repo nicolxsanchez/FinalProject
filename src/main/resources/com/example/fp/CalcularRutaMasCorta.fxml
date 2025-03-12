@@ -44,12 +44,12 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="261.0" layoutY="192.0" text="Ruta Más Corta:">
+      <Label layoutX="233.0" layoutY="190.0" text="Ruta Más Corta:">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <ListView fx:id="lvRutasRegistradas" layoutX="14.0" layoutY="224.0" prefHeight="143.0" prefWidth="157.0" />
+      <ListView fx:id="lvRutasRegistradas" layoutX="14.0" layoutY="224.0" prefHeight="143.0" prefWidth="183.0" />
       <TextArea fx:id="txtResultado" disable="true" layoutX="228.0" layoutY="224.0" prefHeight="143.0" prefWidth="157.0" />
    </children>
 </AnchorPane>

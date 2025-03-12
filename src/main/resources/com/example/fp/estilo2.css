@@ -1,12 +1,15 @@
 
 .button:hover {
-    -fx-background-color: #66c6cb;
+    //-fx-background-color: #66c6cb;
+    -fx-background-color: #73d5db;
     -fx-border-color: white;
     -fx-border-width: 0px 0px 2px 0px;
+    -fx-font-weight: bold;
 }
 
-.button{
+.button {
     -fx-background-color: transparent;
     -fx-border-color: white;
     -fx-border-width: 0px 0px 0px 0px;
+    -fx-font-size: 14px;
 }

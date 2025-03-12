@@ -3,7 +3,6 @@ package logico;
 import java.util.*;
 public class Grafo {
 
-    private static Grafo grafo = null;
     private Map<Parada, List<Ruta>> adyacencias;
 
     public Grafo() {
@@ -22,6 +21,7 @@ public class Grafo {
         return rutas;
     }
 
+    //agrega una nueva parada al grafo
     public boolean agregarParada(Parada parada) {
         if (adyacencias.containsKey(parada)) {
             System.out.println("La parada '" + parada.getNombre() + "' ya existe.");
@@ -32,7 +32,7 @@ public class Grafo {
         return true;
     }
 
-
+    //agrega una nueva ruta entre dos paradas en el grafo
     public boolean agregarRuta(Parada origen, Parada destino, int tiempo, int distancia, double costo) {
         if (!adyacencias.containsKey(origen) || !adyacencias.containsKey(destino)) {
             System.out.println("Origen o destino no existen.");
@@ -45,13 +45,13 @@ public class Grafo {
                 return false;
             }
         }
-
         Ruta nuevaRuta = new Ruta(origen, destino, tiempo, distancia, costo);
         adyacencias.get(origen).add(nuevaRuta);
         System.out.println("Ruta agregada de " + origen.getNombre() + " a " + destino.getNombre());
         return true;
     }
 
+    //modifica los datos de una parada existente
     public boolean modificarParada(Parada parada, String nuevoNombre, double nuevoLatitud, double nuevoLongitud) {
         if (!adyacencias.containsKey(parada)) {
             System.out.println("La parada no existe.");
@@ -64,29 +64,7 @@ public class Grafo {
         return true;
     }
 
-    public boolean modificarRuta(Parada origen, Parada destino, int nuevoTiempo, int nuevaDistancia, double nuevoCosto) {
-        if (!adyacencias.containsKey(origen)) {
-            System.out.println("La parada de origen no existe.");
-            return false;
-        }
-
-        for (Ruta ruta : adyacencias.get(origen)) {
-            if (ruta.getDestino().equals(destino)) {
-                ruta.setTiempo(nuevoTiempo);
-                ruta.setDistancia(nuevaDistancia);
-                ruta.setCosto(nuevoCosto);
-
-                System.out.println("Ruta modificada: " + origen.getNombre() + " → " + destino.getNombre());
-                return true;
-            }
-        }
-
-        System.out.println("No existe la ruta a modificar.");
-        return false;
-    }
-
-
-
+    //elimina una parada del grafo y sus rutas asociadas
     public boolean eliminarParada(Parada parada) {
         if (!adyacencias.containsKey(parada)) {
             System.out.println("La parada no existe.");
@@ -98,6 +76,7 @@ public class Grafo {
         return true;
     }
 
+    //elimina una ruta del grafo
     public boolean eliminarRuta(Ruta ruta) {
         if (!adyacencias.containsKey(ruta.getOrigen())) {
             System.out.println("La parada de origen no existe.");
@@ -113,19 +92,7 @@ public class Grafo {
         return eliminado;
     }
 
-    public void mostrarGrafo() {
-        System.out.println("\n--- Mapa de Rutas ---");
-        for (Map.Entry<Parada, List<Ruta>> entry : adyacencias.entrySet()) {
-            Parada parada = entry.getKey();
-            List<Ruta> rutas = entry.getValue();
-            System.out.println("Parada: " + parada.getNombre() + ")");
-            for (Ruta ruta : rutas) {
-                System.out.println("  → " + ruta.getDestino().getNombre() +
-                        " | Tiempo: " + ruta.getTiempo() + " min | Distancia: " + ruta.getDistancia() + " km | Costo: $" + ruta.getCosto());
-            }
-        }
-    }
-
+    //devuelve el mapa de adyacencias
     public Map<Parada, List<Ruta>> getAdyacencias() {
         return adyacencias;
     }

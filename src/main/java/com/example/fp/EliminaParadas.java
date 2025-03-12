@@ -46,6 +46,7 @@ public class EliminaParadas {
         }
     }
 
+
     private void mostrarAlerta(String titulo, String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle(titulo);

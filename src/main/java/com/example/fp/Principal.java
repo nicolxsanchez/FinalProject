@@ -21,6 +21,5 @@ public class Principal extends Application {
         launch(args);
     }
 
-
 }
 

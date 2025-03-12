@@ -33,7 +33,6 @@ public class ModificaParadas {
         if (paradaSeleccionada == null) {
             return;
         }
-
         txtNombre.setText(paradaSeleccionada.getNombre());
         txtLatitud.setText(String.valueOf(paradaSeleccionada.getLatitud()));
         txtLongitud.setText(String.valueOf(paradaSeleccionada.getLongitud()));
@@ -79,9 +78,6 @@ public class ModificaParadas {
             grafo.modificarParada(paradaSeleccionada, txtNombre.getText(), latitud, longitud);
             mostrarAlerta("Éxito", "Parada modificada correctamente.");
             actualizarComboBox();
-            /*cbParadas.getSelectionModel().clearSelection();
-            cbParadas.setValue(null);
-            cbParadas.setPromptText("<Seleccionar>");*/
             limpiarCampos();
         }
     }

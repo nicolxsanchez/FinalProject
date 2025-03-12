@@ -32,11 +32,13 @@ public class CalcRutaMasCorta {
         cargarParadas();
     }
 
+    //llena los comboboxes de origen y destino con las paradas que existen
     private void cargarParadas() {
         cbOrigen.getItems().setAll(grafo.getParadas());
         cbDestino.getItems().setAll(grafo.getParadas());
     }
 
+    //convierte una lista de paradas en un texto con los nombres separados por "->"
     private String obtenerRutaString(List<Parada> ruta) {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < ruta.size(); i++) {
@@ -48,7 +50,8 @@ public class CalcRutaMasCorta {
         return string.toString();
     }
 
-    private void buscarRutasConPila(Parada origen, Parada destino) {
+    //busca todas las rutas posibles entre dos paradas
+    private void buscarRutas(Parada origen, Parada destino) {
 
         Stack<List<Parada>> pila = new Stack<>();
         List<Parada> caminoInicial = new ArrayList<>();
@@ -78,13 +81,14 @@ public class CalcRutaMasCorta {
         }
     }
 
+    // verifica si hay rutas disponibles entre el origen y destino seleccionado
     private void verificarRutasDisponibles() {
         Parada origenSeleccionada = cbOrigen.getValue();
         Parada destinoSeleccionado = cbDestino.getValue();
 
         if (origenSeleccionada != null && destinoSeleccionado != null) {
             lvRutasRegistradas.getItems().clear();
-            buscarRutasConPila(origenSeleccionada, destinoSeleccionado);
+            buscarRutas(origenSeleccionada, destinoSeleccionado);
 
             if (lvRutasRegistradas.getItems().isEmpty()) {
                 mostrarAdvertencia("No se encontraron rutas entre el origen y el destino seleccionados.");
@@ -92,6 +96,7 @@ public class CalcRutaMasCorta {
         }
     }
 
+        ///calcula la ruta entre el origen y destino seleccionados según el criterio y muestra resultado
         @FXML
         public void calcularRuta () {
             Parada origen = cbOrigen.getValue();
@@ -111,20 +116,21 @@ public class CalcRutaMasCorta {
             }
         }
 
+    //calcula la ruta más corta entre dos paradas usando el algoritmo de Dijkstra
     private String dijkstra(Parada origen, Parada destino, String criterio) {
-        Map<Parada, Integer> dist = new HashMap<>();
-        Map<Parada, Parada> prev = new HashMap<>();
+        Map<Parada, Integer> distancia = new HashMap<>();
+        Map<Parada, Parada> paradaAnterior = new HashMap<>();
 
-        for (Parada p : grafo.getParadas()) {
-            dist.put(p, Integer.MAX_VALUE);
-            prev.put(p, null);
+        for (Parada parada : grafo.getParadas()) {
+            distancia.put(parada, Integer.MAX_VALUE);
+            paradaAnterior.put(parada, null);
         }
-        dist.put(origen, 0);
-        PriorityQueue<Parada> pq = new PriorityQueue<>(Comparator.comparingInt(dist::get));
-        pq.add(origen);
+        distancia.put(origen, 0);
+        PriorityQueue<Parada> cola = new PriorityQueue<>(Comparator.comparingInt(distancia::get));
+        cola.add(origen);
 
-        while (!pq.isEmpty()) {
-            Parada actual = pq.poll();
+        while (!cola.isEmpty()) {
+            Parada actual = cola.poll();
             if (actual.equals(destino)) {
                 break;
             }
@@ -135,30 +141,30 @@ public class CalcRutaMasCorta {
                     Parada vecino = ruta.getDestino();
 
                     int peso = (criterio.equals("Distancia")) ? ruta.getDistancia() : ruta.getTiempo();
-                    int nuevaDist = dist.get(actual) + peso;
-                    if (nuevaDist < dist.get(vecino)) {
-                        dist.put(vecino, nuevaDist);
-                        prev.put(vecino, actual);
-                        pq.add(vecino);
+                    int nuevaDist = distancia.get(actual) + peso;
+                    if (nuevaDist < distancia.get(vecino)) {
+                        distancia.put(vecino, nuevaDist);
+                        paradaAnterior.put(vecino, actual);
+                        cola.add(vecino);
                     }
                 }
             }
         }
 
-        if (dist.get(destino) == Integer.MAX_VALUE) {
+        if (distancia.get(destino) == Integer.MAX_VALUE) {
             return null;
         }
 
         List<Parada> camino = new ArrayList<>();
-        for (Parada at = destino; at != null; at = prev.get(at)) {
-            camino.add(at);
+        for (Parada paradaActual = destino; paradaActual != null; paradaActual = paradaAnterior.get(paradaActual)) {
+            camino.add(paradaActual);
         }
         Collections.reverse(camino);
-
-        String rutaStr = obtenerRutaString(camino);
-        int costoTotal = dist.get(destino);
-        return rutaStr + "\nCosto total en " + criterio.toLowerCase() + ": " + costoTotal;
+        String rutaString = obtenerRutaString(camino);
+        int costoTotal = distancia.get(destino);
+        return rutaString + "\nCosto total en " + criterio.toLowerCase() + ": " + costoTotal;
     }
+
 
     private void mostrarAdvertencia(String mensaje) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
